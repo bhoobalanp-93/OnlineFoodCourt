@@ -1,0 +1,36 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <a (click)="onHome( )" matTooltip="Home"><img width="90" height="65" style="margin: 0% !important;"
+      alt="FoodCourt Logo" src="assets/images/burger.svg" /></a>
+  <span style="width: 170px;">Welcome,<br>Online Food Court <p></p></span>
+  <div class="spacer">
+    <div style="margin-left: 36%;">
+      Say No to hunger, Order food on the go!
+    </div>
+  </div>
+  <div id="signlog" style="width: 20%; display: flex;">
+
+    <div id="formSign" class="cardsignup pl-5" *ngIf="!userDetails">
+      <a class="login btn" (click)="userLogin( )"> Login </a>
+      <button style="border-radius: 16px !important;" class="btn btn-primary rounded-lg" (click)="onCreate( )"> Create
+        an account </button>
+    </div>
+    <div *ngIf="userDetails">
+      <button mat-button [matMenuTriggerFor]="menu">{{userDetails.unique_name}}</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="onLogout()">Log Out</button>
+      </mat-menu>
+    </div>
+  </div>
+  <div class="cartcard">
+    <a (click)="showCart( )">
+      <mat-icon style="cursor: pointer; height: 40px !important; width: 40px !important;" matTooltip="Cart"
+        [matBadge]="badgeCounter" matBadgeColor="warn" svgIcon="Basket">
+      </mat-icon>
+    </a>
+  </div>
+</div>
+
+<div class="content" role="main"></div>
+<carousel-component (countChanged)="countChangedHandler($event)"></carousel-component>
+<div>

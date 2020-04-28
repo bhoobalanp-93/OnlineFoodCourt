@@ -1,0 +1,55 @@
+<mat-toolbar style="height: 41px; ">
+  <span><strong style="color: darkolivegreen;">Cart</strong></span>
+  <span class="fill-remaining-space"></span>
+  <button class="btn-dialog-close" style="height: 32px;" mat-stroked-button (click)=" onClose()">
+    <mat-icon (click)=" onClose()">clear</mat-icon>
+  </button>
+</mat-toolbar>
+<div *ngIf="ordercartItem.length === 0" class="alert alert-info">Your Cart is Empty!</div>
+<div style="overflow-y: auto; height: 75%;" *ngIf="ordercartItem.length > 0">
+  <div><span style="display: block; text-align: center;">Order details of
+      {{restaurantName}}
+      restaurant.</span>
+  </div>
+  <table id="CartTable" class="table table-dark table-sm">
+    <tr>
+      <th *ngFor="let col of displayedColumnsFood">
+        {{col}}
+      </th>
+    </tr>
+    <tr *ngFor="let item of ordercartItem">
+      <td style="vertical-align: inherit !important;"> {{item.foodProductName}} </td>
+      <td style="vertical-align: inherit !important;"> {{item.quantity}} </td>
+      <td style="vertical-align: inherit !important;"> {{item.quantity * item.foodProductPrice |  currency:'INR'}} </td>
+      <td style="width:10% !important">
+        <mat-icon style="cursor: pointer;" matTooltip="Remove" matTooltipPosition="left"
+          (click)="onRemoveFoodItem(item)" svgIcon="Remove">
+        </mat-icon>
+        <mat-form-field style="width: 10% !important;" class="no-line">
+          <div>
+            <input matInput [(ngModel)]="item.quantity" [readonly]="true" />
+          </div>
+        </mat-form-field>
+        <mat-icon style="cursor: pointer;" matTooltip="Add" matTooltipPosition="right" (click)="onAddFoodItem(item)"
+          svgIcon="Add">
+        </mat-icon>
+      </td>
+    </tr>
+  </table>
+  <div style="text-align: center;">
+    <button type="button" class="btn btn-warning">Mode of Payment</button>
+    <div>
+      <mat-radio-group (change)="onChange($event)">
+        <mat-radio-button class="m-1" checked=true value="Online">Online</mat-radio-button>
+        <mat-radio-button class="m-1" value="Cash">COD</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <span style="display: block; text-align: center;">Order Total :{{cartTotal}}</span>
+  </div>
+  <div style="margin: auto; text-align: center;">
+    <button mat-raised-button color="primary" style="margin: 15px" (click)="finishEdit()">Order</button>
+    <button mat-raised-button color="warn" style="margin: 15px" (click)="cancelEdit()">Close</button>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<mat-toolbar style="height: 41px; ">
+  <span>User Login</span>
+  <span class="fill-remaining-space"></span>
+  <button class="btn-dialog-close" style="height: 32px;" mat-stroked-button (click)=" onClose()">
+    <mat-icon (click)=" onClose()">clear</mat-icon>
+  </button>
+</mat-toolbar>
+<form [formGroup]="userservice.loginform" id="NewUser" style="height: 50%;" class="normal-form">
+  <mat-grid-list cols="1" rowHeight="100px">
+
+    <div class="controles-container">
+      <mat-form-field>
+        <input formControlName="email" matInput placeholder="Email*" #userEmail>
+        <mat-error *ngIf="userservice.loginform.controls['email'].errors?.required">This field is mandatory.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="password" type="password" matInput placeholder="Password*">
+        <mat-error>This field is mandatory.</mat-error>
+      </mat-form-field>
+    </div>
+    <br>
+    <div class="loginwrapper">
+      <button mat-raised-button color="primary" (click)="onSubmit()" type="submit">Submit</button>
+    </div>
+  </mat-grid-list>
+</form>

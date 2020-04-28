@@ -1,0 +1,183 @@
+.bgImageContent {
+  height: "300px";
+  width: "100%";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.imagecard {
+  background-color: #fafafa;
+  height: 50%;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.img-overlay {
+  position: absolute;
+  /* margin-top: 150px; */
+  top: 120px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  height: fit-content;
+}
+
+.form-control {
+  /* box-shadow: 0 10px 40px 0 #B0C1D9; */
+  border-radius: 10px;
+  height: 35px;
+  width: 25%;
+  outline: none;
+}
+
+.scard.scard-small-signup {
+  /* height: 50px; */
+  height: fit-content;
+  width: 21%;
+}
+
+.scard {
+  border-radius: 25px;
+  border: 2px solid #e0d0c829;
+  background-color: #ddddddc7;
+  /* border: 1px solid #eee;
+  background-color: #fafafa; */
+  height: 40px;
+  width: 200px;
+  /* margin: 0 8px 16px; */
+  padding: 16px;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  margin-left: 38% !important;
+}
+
+/* Structure */
+.example-container {
+  position: relative;
+  min-height: 200px;
+}
+
+.example-table-container {
+  position: relative;
+  max-height: 400px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.example-loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-rate-limit-reached {
+  color: #980000;
+  max-width: 360px;
+  text-align: center;
+}
+
+/* Column Widths */
+.mat-column-number,
+.mat-column-state {
+  max-width: 64px;
+}
+
+.mat-column-created {
+  max-width: 124px;
+}
+
+
+table {
+  width: 100%;
+}
+
+tr.example-detail-row {
+  height: 0;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.example-element-diagram {
+  min-width: 80px;
+  border: 2px solid black;
+  padding: 8px;
+  font-weight: lighter;
+  margin: 8px 0;
+  height: 104px;
+}
+
+.example-element-symbol {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+
+.example-element-description {
+  padding: 16px;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
+}
+
+.mat-row:hover {
+  background-color: rgba(80, 139, 95, 0.678);
+}
+
+::ng-deep .no-line .mat-form-field-underline {
+  display: none;
+}
+
+mat-form-field {
+  width: 4%;
+  text-align: center;
+}
+
+.example-card {
+  width: 100%;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.mat-card {
+  display: block;
+  position: relative;
+  padding: 0px !important;
+  border-radius: 0px;
+  box-shadow: none !important;
+}

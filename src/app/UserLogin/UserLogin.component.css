@@ -1,0 +1,57 @@
+.loginwrapper {
+  text-align: center;
+}
+
+div.container {
+  margin: 0px 40px;
+}
+
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+
+form.normal-form {
+  margin: 10px;
+}
+
+.controles-container {
+  width: 100%;
+  /* padding: 5%; */
+}
+
+.controles-container>* {
+  width: 100%;
+}
+
+.btncontroles-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.usercontroles-container {
+  width: 100%;
+  padding: 5%;
+  justify-content: center;
+}
+
+.mat-dialog-content {
+  overflow-y: hidden !important;
+}
+
+.Logincard {
+  border-radius: 4px;
+  border: 1px solid #eee;
+  background-color: #fafafa;
+  height: 65%;
+  width: 50%;
+  margin: 0 8px 16px;
+  padding: 16px;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  line-height: 24px;
+}

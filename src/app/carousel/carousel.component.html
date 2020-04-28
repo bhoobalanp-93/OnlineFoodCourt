@@ -1,0 +1,136 @@
+<div id="searchRestaurant">
+  <div class="imagecard">
+    <img width="100%" height="180px" alt="FoodCourt Logo"
+      src="http://localhost:4200/assets/images/onlineFoodCourtBG.jpg" />
+    <div class="img-overlay">
+      <div style="height: fit-content;">
+        <div class="scard scard-small-signup">
+          <mat-search-bar (keyup)="applyFilter($event)" style="margin-left: 205px !important; height: 17px !important;">
+          </mat-search-bar>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="example-table-container">
+    <mat-accordion>
+      <mat-expansion-panel [expanded]='f_RestaurantPanel' [disabled]='!f_RestaurantPanel'>
+        <!-- <mat-expansion-panel-header>
+          <mat-panel-title>Available Restaurants</mat-panel-title>
+        </mat-expansion-panel-header> -->
+        <table mat-table [dataSource]="lstResautants" class="example-table">
+          <ng-container matColumnDef="imageUrl">
+            <th mat-header-cell *matHeaderCellDef>#</th>
+            <td style="width: 16%;" mat-cell *matCellDef="let restaurant"> <img width="100" height="70"
+                [src]="restaurant.rest_image" />
+            </td>
+          </ng-container>
+          <!-- Restaurant Name Column -->
+          <ng-container matColumnDef="restaurantName">
+            <th mat-header-cell *matHeaderCellDef>Restaurant Name</th>
+            <td mat-cell *matCellDef="let restaurant ">{{restaurant.restaurantName}}</td>
+          </ng-container>
+
+          <!-- contact	  Column -->
+          <ng-container matColumnDef="rest_Contactno">
+            <th mat-header-cell *matHeaderCellDef>Contact</th>
+            <td mat-cell *matCellDef="let restaurant">{{restaurant.rest_Contactno}}</td>
+          </ng-container>
+
+          <!-- Delivery Time Column -->
+          <ng-container matColumnDef="rest_DeliveryTime">
+            <th mat-header-cell *matHeaderCellDef>Delivery Time</th>
+            <td mat-cell *matCellDef="let restaurant">{{restaurant.rest_DeliveryTime}}</td>
+          </ng-container>
+
+          <!-- Rating Column -->
+          <ng-container matColumnDef="rest_Rating">
+            <th mat-header-cell *matHeaderCellDef>Rating</th>
+            <td mat-cell *matCellDef="let restaurant">{{restaurant.rest_Rating}}</td>
+          </ng-container>
+
+          <!-- Delete Button for Admin -->
+
+          <ng-container matColumnDef="Delete">
+
+            <th mat-header-cell *matHeaderCellDef>Admin Action</th>
+            <td mat-cell *matCellDef="let restaurant" (click)="$event.stopPropagation()"><button mat-button color="warn"
+                (click)="onDelete(restaurant.restaurantId)">Delete</button>
+            </td>
+          </ng-container>
+
+
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumnsRest;sticky: true"></tr>
+          <tr mat-row *matRowDef="let restaurant; columns: displayedColumnsRest;" matTooltip="Select this Restaurant"
+            matTooltipPosition="left" (click)="displayFoodItems(restaurant)">
+          </tr>
+        </table>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel style="width: 100%;" [expanded]='f_foodItemPanel' [disabled]='!f_foodItemPanel'>
+        <div style="text-align: center;">
+          <mat-card class="example-card">
+
+            <mat-card-title>{{resaurantNameSel}}</mat-card-title>
+            <mat-card-subtitle style="margin-bottom: 0px !important;">Rating {{resaurantRatingSel}}</mat-card-subtitle>
+
+            <img width="170" height="100" [src]="resaurantImageSel" />
+            <mat-card-content>
+              <p style="margin-top: 6px;">Our mission is to make customers happy..!!</p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <table mat-table [dataSource]="lstFoodProducts" class="example-table">
+
+          <ng-container matColumnDef="PimageUrl">
+            <th mat-header-cell *matHeaderCellDef>#</th>
+            <td style="width: 16%;" mat-cell *matCellDef="let foodProduct"> <img width="100" height="70"
+                [src]="foodProduct.foodProductImage" />
+            </td>
+          </ng-container>
+          <!-- Food Item Name Column -->
+          <ng-container matColumnDef="foodItemName">
+            <th mat-header-cell *matHeaderCellDef>Food Item Name</th>
+            <td mat-cell style="width: 30% !important;" *matCellDef="let foodProduct ">{{foodProduct.foodProductName}}
+            </td>
+          </ng-container>
+
+          <!-- Food Item Price -->
+          <ng-container matColumnDef="foodItemPrice">
+            <th mat-header-cell *matHeaderCellDef>Price</th>
+            <td mat-cell *matCellDef="let foodProduct">{{foodProduct.foodProductPrice | currency:'INR'}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="foodItemAdd">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let foodProduct">
+              <mat-icon style="cursor: pointer;" matTooltip="Remove" matTooltipPosition="left"
+                (click)="onRemoveFoodItem(foodProduct)" class="mat-icon-rtl-mirror" svgIcon="Remove">
+              </mat-icon>
+              <mat-form-field class="no-line">
+                <div *ngFor="let item of cartItem">
+                  <input class="ml-0" *ngIf="item.foodProductID == foodProduct.foodProductID" matInput
+                    [(ngModel)]="item.quantity" [readonly]="true" />
+                </div>
+              </mat-form-field>
+              <mat-icon style="cursor: pointer;" matTooltip="Add" matTooltipPosition="right"
+                (click)="onAddFoodItem(foodProduct)" class="mat-icon-rtl-mirror" svgIcon="Add">
+              </mat-icon>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumnsFood;sticky: true">
+          </tr>
+          <tr mat-row *matRowDef=" let foodProduct; columns: displayedColumnsFood;">
+          </tr>
+        </table>
+        <div style="margin: auto; text-align: center;">
+          <button mat-raised-button color="primary" style="margin: 30px" (click)="finishEdit()">Continue</button>
+          <button mat-raised-button color="warn" style="margin: 30px" (click)="cancelEdit()">Close</button>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-paginator [length]="resultsLength" [pageSize]="5"></mat-paginator>
+
+  </div>
