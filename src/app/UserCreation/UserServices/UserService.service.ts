@@ -43,9 +43,10 @@ export class UserserviceService {
     });
 
     _CustomerURL = "https://localhost:44384/Api/Customers/PostCustomer";
+    _CustomerURLIIS = "http://localhost:8080/Api/Customers/PostCustomer";
 
     createcustomer(data: any): Observable<any> {
-        return this.httpCustomer.post<any>(this._CustomerURL, data);
+        return this.httpCustomer.post<any>(this._CustomerURLIIS, data);
     }
 }
 

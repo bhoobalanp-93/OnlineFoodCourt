@@ -23,7 +23,8 @@ export class UserloginService {
     }
     AuthenticateUser(login: LoginModel) {
         const login_URL = "https://localhost:44384/Api/Login/Authenticate";
-        return this.httpclient.post(login_URL, login)
+        const login_URLIIS = "http://localhost:8080/Api/Login/Authenticate";
+        return this.httpclient.post(login_URLIIS, login)
     }
 
 }

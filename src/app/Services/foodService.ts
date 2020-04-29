@@ -38,12 +38,14 @@ export class FoodDataService {
 
     UserDetail(userEmail: string): Observable<any> {
         const login_URL = "https://localhost:44384/Api/customers/GetloggedCustomer";
-        return this.httpclient.get(login_URL + '/?userEmail=' + userEmail)
+        const login_URLIIS = "http://localhost:8080/Api/customers/GetloggedCustomer";
+        return this.httpclient.get(login_URLIIS + '/?userEmail=' + userEmail)
     }
 
     PlaceOrder(orderData: PostOrder): Observable<any> {
         const placeOrder_URL = "https://localhost:44384/Api/FoodOrders/PostFoodOrder";
-        return this.httpclient.post(placeOrder_URL, orderData)
+        const placeOrder_URLIIS = " http://localhost:8080/Api/FoodOrders/PostFoodOrder";
+        return this.httpclient.post(placeOrder_URLIIS, orderData)
     }
 }
 
