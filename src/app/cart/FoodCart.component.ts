@@ -123,6 +123,7 @@ export class FoodcartComponent implements OnInit {
                 duration: 5000,
                 verticalPosition: 'top'
             });
+            return false;
         }
         else {
             this.FoodData.UserDetail(this.userDetails.email)
@@ -148,6 +149,8 @@ export class FoodcartComponent implements OnInit {
             duration: 5000,
             verticalPosition: 'top'
         });
+
+        //Occurs on the successful order placement
         window.location.reload();
         this.onClose();
     }
