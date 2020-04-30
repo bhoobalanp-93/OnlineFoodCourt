@@ -19,7 +19,6 @@ export class CarouselserviceService {
         const _foodProductsParam = new HttpParams().set('id', restaurantID.toString());
         const _foodProductsURL = "https://localhost:44384/Api/FoodOrders/GetFoodProduct";
         const _foodProductsURLIIS = "http://localhost:8080/Api/FoodOrders/GetFoodProduct";
-        console.log(this.httpRestaurant.get(_foodProductsURL, { params: _foodProductsParam }));
         return this.httpRestaurant.get(_foodProductsURLIIS, { params: _foodProductsParam });
     }
 

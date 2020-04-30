@@ -148,8 +148,7 @@ export class FoodcartComponent implements OnInit {
             duration: 5000,
             verticalPosition: 'top'
         });
-        this.ordercartItem = [];
-        this.ngOnInit();
+        window.location.reload();
         this.onClose();
     }
 
