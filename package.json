@@ -35,7 +35,7 @@
     "popper.js": "^1.16.1",
     "rxjs": "~6.5.4",
     "slick-carousel": "^1.8.1",
-    "swiper": "^5.3.6",
+    "swiper": "^6.5.1",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },
